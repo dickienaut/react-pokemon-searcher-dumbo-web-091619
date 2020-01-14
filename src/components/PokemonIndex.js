@@ -21,8 +21,18 @@ class PokemonPage extends React.Component {
   }
 
 
+  updateSearchTerm = (event) => {
+    this.setState({
+      searchTerm: event.target.value
+    })
+    console.log(this.state.searchTerm)
+  }
+
+
 
   render() {
+    const pokemon = this.state.pokemon
+    const desiredPokemon = pokemon.filter(pokemon => pokemon.name.includes(this.state.searchTerm))
 
     return (
       <Container>
@@ -30,9 +40,9 @@ class PokemonPage extends React.Component {
         <br />
         <PokemonForm />
         <br />
-        <Search onChange={() => console.log('🤔')} />
+        <Search onChange={this.updateSearchTerm} searchTerm={this.state.searchTerm}/>
         <br />
-        <PokemonCollection pokemon={this.state.pokemon}/>
+        <PokemonCollection pokemon={desiredPokemon}/>
       </Container>
     )
   }
