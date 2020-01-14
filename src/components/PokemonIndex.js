@@ -29,6 +29,13 @@ class PokemonPage extends React.Component {
   }
 
 
+  addPokemon = (pokemon) => {
+    this.setState({
+      pokemon: [pokemon, ...this.state.pokemon]
+    })
+  }
+
+
 
   render() {
     const pokemon = this.state.pokemon
@@ -38,7 +45,7 @@ class PokemonPage extends React.Component {
       <Container>
         <h1>Pokemon Searcher</h1>
         <br />
-        <PokemonForm />
+        <PokemonForm addPokemon={this.addPokemon}/>
         <br />
         <Search onChange={this.updateSearchTerm} searchTerm={this.state.searchTerm}/>
         <br />
