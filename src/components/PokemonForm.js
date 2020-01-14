@@ -29,7 +29,6 @@ class PokemonForm extends React.Component {
       </div>
     )
   }
-  .
 }
 
 export default PokemonForm
